@@ -1,0 +1,4 @@
+Tela de Venda:
+A cada leitura de codigo de barras recarregar tela com as informações do produto e seu preço, 
+se nao tiver nenhuma quantidade ai por padrao é 1. Senão tem apertar uma tecla que abre um pop-pup para digitar a quantidade. 
+Na hora de finalizar a venda, apertar uma ou clicar no botao Finalizar Venda.
