@@ -3,7 +3,6 @@
 *.zip
 .idea
 .sass-cache/
-/nbproject/
 /nbproject/private/
 /node_modules/
 /bower_components/
