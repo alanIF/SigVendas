@@ -3,7 +3,6 @@
 *.zip
 .idea
 .sass-cache/
-/nbproject/private/
 /node_modules/
 /bower_components/
 ad.js
