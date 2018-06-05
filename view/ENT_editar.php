@@ -24,15 +24,16 @@ include("head.php");
                 if (isset($_GET['id'])){
                     $id = (int)$_GET['id'];
                     $conn = F_conect();
-                    $result = mysqli_query($conn, "Select e.data_entrada data_entrada,e.data_validade data_validade,e.data_fabricacao data_fabricacao, e.qtd qtd,p.descricao produto,e.observacao obs from entrada e, produto p where e.id=".$id." and e.id_produto=p.id");
+                    $result = mysqli_query($conn, "Select e.data_entrada data_entrada,e.data_validade data_validade, e.qtd qtd,p.descricao produto,e.observacao obs ,e.porcentagem porcentagem, e.preco_compra_unitario preco from entrada e, produto p where e.id=".$id." and e.id_produto=p.id");
                       if (mysqli_num_rows($result) >=1){
                             while ($row = $result->fetch_assoc()) {
                                 $data_entrada=$row['data_entrada'];
-                                $data_fabricacao=$row['data_fabricacao'];
                                 $data_validade=$row['data_validade'];
                                 $qtd=$row['qtd'];
                                 $produto=$row['produto'];
                                 $obs=$row['obs'];
+                                $preco=$row['preco'];
+                                $porcentagem=$row['porcentagem'];
                              }
                       }else{
                          
@@ -86,7 +87,12 @@ include("head.php");
                          <div class="form-group">
                             <input class="form-control" name="qtd" type="number" placeholder="Quantidade" required value="<?php echo $qtd;?>">
                         </div>
-              
+                           <div class="form-group">
+                            <input class="form-control" name="porcentagem" type="number" placeholder="Porcentagem de Lucro" required value="<?php echo $porcentagem;?>">
+                        </div>
+                  <div class="form-group">
+                            <input class="form-control" name="preco" type="number" placeholder="Preço Unitário" required value="<?php echo $preco;?>">
+                        </div>
                  <div class="form-group">
 
                             <div class="input-group date">
@@ -99,12 +105,7 @@ include("head.php");
                         </div> 
                             <div class="form-group">
 
-                            <div class="input-group date">
-                                <div class="input-group-addon">
-                                    <i class="fa fa-calendar"></i>
-                                </div>
-                                <input type="text" class="form-control pull-right"  name="data_fabricacao" placeholder="Data de Fabricação"  data-inputmask="'alias': 'dd/mm/yyyy'" data-mask required value="<?php echo $data_fabricacao;?>">
-                            </div>
+                           
                             <!-- /.input group -->
                         </div> 
                          <div class="form-group">
@@ -131,7 +132,7 @@ include("head.php");
                     if (isset($_POST["botao"])) {
                         $objControl = new EntradaController();
                         if($_POST["qtd"]>0){
-                        $objControl->atualizar($_POST["produto"], $_POST["qtd"], $_POST["data_entrada"],$_POST["data_fabricacao"],$_POST["data_validade"],$_POST['obs'],$id);
+                        $objControl->atualizar($_POST["produto"], $_POST["qtd"], $_POST["data_entrada"],$_POST["porcentagem"],$_POST["data_validade"],$_POST['obs'],$_POST["preco"],$id);
                                             echo "<meta HTTP-EQUIV='refresh' CONTENT='1;URL='ENT_editar.php?id=".$id."'>";
 
                         }else{

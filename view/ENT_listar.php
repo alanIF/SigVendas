@@ -48,9 +48,11 @@ include("head.php");
                                          <th>Produto</th>
 
                                         <th>Data Entrada</th>
-                                        <th>Data de Fabricação</th>
                                         <th>Data de Validade</th>
                                         <th>Quantidade</th>
+                                         <th>Preço Unitário</th>
+                                          <th>Porcentagem de Lucro</th>
+                                       
                                         <th>Observação</th>
 
                                         <th>Ações</th>

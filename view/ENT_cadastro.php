@@ -53,9 +53,15 @@ include("head.php");
                          <div class="form-group">
                             <input class="form-control" name="qtd" type="number" placeholder="Quantidade" required>
                         </div>
-              
+               <div class="form-group">
+                            <input class="form-control" name="porcentagem" type="number" placeholder="Porcentagem de Lucro" required>
+                        </div>
                  <div class="form-group">
-
+<div class="form-group">
+                            <input class="form-control" name="preco" type="number" placeholder="Preço Unitário" required>
+                        </div>
+                 </div>
+                 <div class="form-group">
                             <div class="input-group date">
                                 <div class="input-group-addon">
                                     <i class="fa fa-calendar"></i>
@@ -64,16 +70,7 @@ include("head.php");
                             </div>
                             <!-- /.input group -->
                         </div> 
-                            <div class="form-group">
-
-                            <div class="input-group date">
-                                <div class="input-group-addon">
-                                    <i class="fa fa-calendar"></i>
-                                </div>
-                                <input type="text" class="form-control pull-right" name="data_fabricacao" placeholder="Data de Fabricação"  data-inputmask="'alias': 'dd/mm/yyyy'" data-mask required>
-                            </div>
-                            <!-- /.input group -->
-                        </div> 
+                             
                          <div class="form-group">
 
                             <div class="input-group date">
@@ -97,7 +94,7 @@ include("head.php");
                     if (isset($_POST["botao"])) {
                         $objControl = new EntradaController();
                         if($_POST["qtd"]>0){
-                        $objControl->Cadastrar($_POST["produto"], $_POST["qtd"], $_POST["data_entrada"],$_POST["data_fabricacao"],$_POST["data_validade"],$_POST['obs']);
+                        $objControl->Cadastrar($_POST["produto"], $_POST["qtd"], $_POST["data_entrada"],$_POST["data_validade"],$_POST['obs'],$_POST["porcentagem"],$_POST['preco']);
                         }else{
                             Alert("ERROR!", "Digite uma quantidade positiva!","danger");
                         }
